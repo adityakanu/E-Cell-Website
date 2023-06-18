@@ -1,31 +1,26 @@
-import { Link } from "react-router-dom";
 export default function Navbar() {
   return (
-    <section id="navbar" className="font-Poppins">
-      <div>
+    <section id="navbar" className="font-Poppins bg-black">
+      <div className="inline-flex justify-center items-center">
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <a href="/">Home</a>
           </li>
 
           <li>
-            <Link to="/">Events</Link>
+            <a href="/">About Us</a>
           </li>
 
           <li>
-            <Link to="/">Gallery</Link>
+            <a href="/">Initiatives</a>
           </li>
 
           <li>
-            <Link to="/">Our Team</Link>
+            <a href="/">Gallery</a>
           </li>
 
           <li>
-            <Link to="/">Testimonials</Link>
-          </li>
-
-          <li>
-            <Link to="/">Contact Us</Link>
+            <a href="/">Reach Out</a>
           </li>
         </ul>
       </div>
