@@ -1,26 +1,47 @@
+import ecellWhite from "../assets/Logo-White.png";
+
 export default function Navbar() {
   return (
-    <section id="navbar" className="font-Poppins bg-black">
-      <div className="inline-flex justify-center items-center">
-        <ul>
-          <li>
-            <a href="/">Home</a>
+    <section
+      id="navbar"
+      className="font-Poppins font-light text-sm bg-transparent "
+    >
+      <div className="">
+        <ul className="flex justify-center items-center pt-4 px-5">
+          <li className="ml-4 mr-auto">
+            <a href="/">
+              <img src={ecellWhite} className="w-10" alt="" />
+            </a>
           </li>
 
-          <li>
-            <a href="/">About Us</a>
+          <li className="mr-6">
+            <a className="text-white hover:text-cyan-300" href="/">
+              Home
+            </a>
           </li>
 
-          <li>
-            <a href="/">Initiatives</a>
+          <li className="mr-6">
+            <a className="text-white hover:text-cyan-300" href="/">
+              About Us
+            </a>
           </li>
 
-          <li>
-            <a href="/">Gallery</a>
+          <li className="mr-6">
+            <a className="text-white hover:text-cyan-300" href="/">
+              Initiatives
+            </a>
           </li>
 
-          <li>
-            <a href="/">Reach Out</a>
+          <li className="mr-6">
+            <a className="text-white hover:text-cyan-300" href="/">
+              Gallery
+            </a>
+          </li>
+
+          <li className="mr-4">
+            <a className="text-white hover:text-cyan-300" href="/">
+              Reach Out
+            </a>
           </li>
         </ul>
       </div>
