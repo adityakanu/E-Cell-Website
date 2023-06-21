@@ -1,7 +1,7 @@
 #root {
   /* max-width: 1280px; */
   margin: 0rem auto;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .logo {
@@ -41,4 +41,21 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.reachOut-address {
+  padding: 5rem 5rem;
+  width: 40vw;
+}
+
+.socialMedia img{
+  height: 2rem; 
+  margin: 2rem .6rem;
+  border-radius: 100%;
+}
+
+.bg-grey{
+  background-color: 2B2B2B;
+  width: 21rem;
+  
 }

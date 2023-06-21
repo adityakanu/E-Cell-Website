@@ -1,7 +1,7 @@
 export default function About() {
   return (
     <section id="About" className="font-Poppins bg-yellow-600">
-      <div className=" flex items-center justify-center h-screen">
+      <div className=" flex items-center justify-center h-screen text-center">
         <div>
           <img src="/" alt="" />
         </div>
