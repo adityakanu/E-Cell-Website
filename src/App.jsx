@@ -7,9 +7,11 @@ import Navbar from "./components/Navbar";
 import ReachOut from "./components/ReachOut";
 
 function App() {
+  
   return (
     <main className="bg-gray-900 body-font">
       <Navbar />
+      
       <Home />
       <About />
       <Initiative />
