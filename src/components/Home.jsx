@@ -23,7 +23,7 @@ export default function Home() {
 
           <div className="z-10 absolute md:px-5 py-2 px-10 md:text-4vl text-3vl font-bold font-Montserrat">
             <h1 className=" bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-sky-400 drop-shadow-2xl shadow-sky-500 ">
-              The Entrepreneurship Cell
+              The Entrepreneurship cell
             </h1>
             <h1 className=" text-orange-100">NIT Agartala</h1>
           </div>
