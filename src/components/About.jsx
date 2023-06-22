@@ -1,7 +1,10 @@
 import "locomotive-scroll/dist/locomotive-scroll.css";
-import { useRef } from "react";
-import { LocomotiveScrollProvider } from "react-locomotive-scroll";
-import ECellAbout from "../assets/Logo.png";
+import { useEffect, useRef } from "react";
+import {
+  LocomotiveScrollProvider,
+  useLocomotiveScroll,
+} from "react-locomotive-scroll";
+import ECellAbout from "../assets/grp.jpg";
 
 export default function About() {
   const containerRef = useRef(null);
@@ -23,7 +26,7 @@ export default function About() {
           <div>
             <img
               src={ECellAbout}
-              className="bg-black/25 rounded-md p-10 scale-125 transform-gpu "
+              className="bg-black/25 rounded-md p-5  transform-gpu "
               alt="bg"
             />
           </div>
@@ -40,9 +43,9 @@ export default function About() {
               organization with multi-talented like-minded people striving to
               solve the various problem with an entrepreneurial minsdset
             </p>
-            <button className="bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 rounded-full drop-shadow-xl">
+            {/* <button className="bg-black hover:text-black hover:bg-white text-white font-bold py-2 px-4 rounded-full drop-shadow-xl">
               <a href="/">Meet the team</a>
-            </button>
+            </button> */}
           </div>
         </div>
       </section>
