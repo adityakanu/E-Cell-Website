@@ -1,12 +1,8 @@
 #root {
   /* max-width: 1280px; */
   margin: 0rem auto;
-<<<<<<< HEAD
   /* text-align: center; */
-=======
-  text-align: center;
   width: 100vw;
->>>>>>> 62050efe737e133ebaa8851d47223a7e497d6919
 }
 
 .logo {
@@ -48,7 +44,6 @@
   color: #888;
 }
 
-<<<<<<< HEAD
 .reachOut-address {
   padding: 5rem 5rem;
   width: 40vw;
@@ -62,8 +57,4 @@
 
 .bg-grey{
   background-color: 2B2B2B;
-  width: 21rem;
-  
 }
-=======
->>>>>>> 62050efe737e133ebaa8851d47223a7e497d6919

@@ -2,16 +2,13 @@ import ECellAbout from "../assets/Logo.png";
 export default function About() {
   return (
     <section id="About" className="font-Poppins bg-yellow-600">
-<<<<<<< HEAD
       <div className=" flex items-center justify-center h-screen text-center">
-        <div>
+        </div>
           <img src="/" alt="" />
-=======
       <div className=" flex items-center justify-center h-screen">
 
         <div className="AboutUsText">
           <p className="font-Montserrat font-bold text-lg text-white  -rotate-90 p-0.5 mx-8 " >About&nbsp;Us</p>
->>>>>>> 62050efe737e133ebaa8851d47223a7e497d6919
         </div>
         <div>
           <img src={ECellAbout} className="bg-black/25 rounded-md p-10 scale-125 transform-gpu " alt="bg" />
