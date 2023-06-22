@@ -1,7 +1,7 @@
-import { ContactShadows, OrbitControls, useTexture } from "@react-three/drei";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+/* eslint-disable react/no-unknown-property */
+import { ContactShadows, useTexture } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense, useRef } from "react";
-import { TextureLoader } from "three/src/loaders/TextureLoader";
 import { Effects } from "./Effects";
 const name = (type) => `Rock035_1K_${type}.png`;
 function Cube() {

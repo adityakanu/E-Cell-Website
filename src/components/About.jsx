@@ -1,9 +1,6 @@
 import "locomotive-scroll/dist/locomotive-scroll.css";
-import { useEffect, useRef } from "react";
-import {
-  LocomotiveScrollProvider,
-  useLocomotiveScroll,
-} from "react-locomotive-scroll";
+import { useRef } from "react";
+import { LocomotiveScrollProvider } from "react-locomotive-scroll";
 import ECellAbout from "../assets/Logo.png";
 
 export default function About() {
