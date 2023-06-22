@@ -1,10 +1,24 @@
 
 import ECellAbout from "../assets/grp.jpg";
 
+    
+import "locomotive-scroll/dist/locomotive-scroll.css";
+import { useEffect, useRef } from "react";
+import {
+  LocomotiveScrollProvider,
+  useLocomotiveScroll,
+} from "react-locomotive-scroll";
+// import ECellAbout from "../assets/Logo.png";
+
 export default function About() {
   return (
-
-    <section id="About" className="font-Poppins bg-yellow-600 z-40 opacity-100">
+    <LocomotiveScrollProvider
+      containerRef={containerRef}
+      options={{
+        smooth: true,
+      }}
+    >
+      <section id="About" className="font-Poppins bg-yellow-600 z-40 opacity-100">
       <div className=" flex items-center justify-center h-screen ">
       
         <div className="AboutUsText">
@@ -24,5 +38,6 @@ export default function About() {
         </div>
       </div>
     </section>
+    </LocomotiveScrollProvider>
   );
 }

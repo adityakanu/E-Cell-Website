@@ -2,6 +2,7 @@ import Facebook from "../assets/facebookLogo.png";
 import Instagram from "../assets/instagramLogo.png";
 import Linkedin from "../assets/linkedInLogo.png";
 import Twiter from "../assets/twiterLogo.png";
+import ECell from "../assets/Logo.png";
 export default function ReachOut() {
   return (
     <section id="ReachOut">
@@ -39,12 +40,12 @@ export default function ReachOut() {
           </div>
         </div>
       </div>
-      <div className="contactUs flex  bg-black p-10 text-White ">
+      <div className="contactUs flex  bg-black p-10 text-White w-200">
         <div id="map" class="flex inline-block">
           <iframe
             src="https://www.google.com/maps/place/E-CELL,+NIT+Agartala/@23.840679,91.423346,15z/data=!4m6!3m5!1s0x3753ed686722f717:0x18d822d15feb14af!8m2!3d23.8406785!4d91.4233464!16s%2Fg%2F11g24q3qqm?hl=en&entry=ttu"
             height="300"
-            width="400"
+            width="300"
             frameborder="0"
           ></iframe>
 
@@ -61,6 +62,7 @@ export default function ReachOut() {
             <h3>E-Mail</h3>
             <p>ecellnita@gmail.com</p>
           </div>
+            <img src={ECell} className="bg-black/30 p-10 h-21"/>
         </div>
       </div>
     </section>

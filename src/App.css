@@ -2,6 +2,7 @@
   /* max-width: 1280px; */
   margin: 0rem auto;
   /* text-align: center; */
+  width: 100vw;
 }
 
 .logo {
@@ -61,4 +62,5 @@
   width: 21rem;
   
 }
+
 
