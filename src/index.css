@@ -5,6 +5,7 @@
 
 #root,
 body {
+    background-color: rgb(4, 2, 20);
     width: 100vw;
     box-sizing: border-box;
 }
