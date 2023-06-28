@@ -1,5 +1,4 @@
 import "./App.css";
-// import Square from "./components/3d/square";
 import About from "./components/About";
 import Gallery from "./components/Gallery";
 import Home from "./components/Home";
@@ -11,7 +10,6 @@ function App() {
   return (
     <main className="bg-black/70 body-font">
       <Navbar />
-      {/* <Square /> */}
       <Home />
       <About />
       <Initiative />
