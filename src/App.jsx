@@ -7,17 +7,16 @@ import Navbar from "./components/Navbar";
 import ReachOut from "./components/ReachOut";
 
 function App() {
-  
-  return (
-    <main className="bg-black/70 body-font">
-      <Navbar />
-      <Home />
-      <About />
-      <Initiative />
-      <Gallery />
-      <ReachOut />
-    </main>
-  );
+    return (
+        <main className="bg-black/70 body-font">
+            <Navbar />
+            <Home />
+            <About />
+            <Initiative />
+            <Gallery />
+            <ReachOut />
+        </main>
+    );
 }
 
 export default App;
