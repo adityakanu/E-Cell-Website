@@ -13,8 +13,8 @@ export default function ReachOut() {
                         <br />
                         <h3>Address</h3>
                         <p>
-                            E-CELL, RIC Center, Computer ScienceDepartment, NIT,
-                            Agartala, Tripura 799046
+                            E-CELL, RIC Center, Computer Science Department,
+                            NIT, Agartala, Tripura 799046
                         </p>
                         <br />
                         <h3>Contact</h3>
@@ -23,16 +23,32 @@ export default function ReachOut() {
                         <h3>E-Mail</h3>
                         <p>ecellnita@gmail.com</p>
                         <div className="flex socialMedia">
-                            <a href="https://www.facebook.com/ecellnita/">
+                            <a
+                                href="https://www.facebook.com/ecellnita/"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
                                 <img src={Facebook} alt="" />
                             </a>
-                            <a href="https://www.instagram.com/ecellnita/">
+                            <a
+                                href="https://www.instagram.com/ecellnita/"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
                                 <img src={Instagram} alt="" />
                             </a>
-                            <a href="https://www.linkedin.com/company/ecellnita/">
+                            <a
+                                href="https://www.linkedin.com/company/ecellnita/"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
                                 <img src={Linkedin} alt="" />
                             </a>
-                            <a href="https://twitter.com/ecellnita">
+                            <a
+                                href="https://twitter.com/ecellnita"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
                                 <img src={Twiter} alt="" />
                             </a>
                         </div>
