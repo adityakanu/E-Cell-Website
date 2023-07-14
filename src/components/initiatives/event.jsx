@@ -25,11 +25,11 @@ const TimelineEvent = ({ date, title, description }) => {
 			></div>
 
 			<motion.div className='pl-10 text-white' style={{ opacity }}>
-				<span className='text-xs font-bold tracking-widest !text-gray-100 opacity-40'>
+				<span className='text-sm font-bold tracking-widest !text-gray-100 opacity-40'>
 					{date}
 				</span>
-				<h3 className='mb-2 text-2xl font-semibold tracking-wide'>{title}</h3>
-				<p className='text-md'>{description}</p>
+				<h3 className='mb-2 text-3xl font-semibold tracking-wide'>{title}</h3>
+				<p className='text-xl'>{description}</p>
 			</motion.div>
 		</div>
 	);
