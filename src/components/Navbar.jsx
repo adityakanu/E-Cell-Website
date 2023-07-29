@@ -13,31 +13,46 @@ export default function Navbar() {
 
                 <ul className="flex items-center md:mr-8 space-x-9">
                     <li>
-                        <a className="text-white hover:text-cyan-300" href="/">
+                        <a
+                            className="font-thin text-amber-400 hover:text-cyan-300"
+                            href="/"
+                        >
                             Home
                         </a>
                     </li>
 
                     <li>
-                        <a className="text-white hover:text-cyan-300" href="/">
+                        <a
+                            className="font-thin text-amber-400 hover:text-cyan-300"
+                            href="/"
+                        >
                             About Us
                         </a>
                     </li>
 
                     <li>
-                        <a className="text-white hover:text-cyan-300" href="/">
+                        <a
+                            className="font-thin text-amber-400 hover:text-cyan-300"
+                            href="/"
+                        >
                             Initiatives
                         </a>
                     </li>
 
                     <li>
-                        <a className="text-white hover:text-cyan-300" href="/">
+                        <a
+                            className="font-thin text-amber-400 hover:text-cyan-300"
+                            href="/"
+                        >
                             Gallery
                         </a>
                     </li>
 
                     <li>
-                        <a className="text-white hover:text-cyan-300" href="/">
+                        <a
+                            className="font-thin text-amber-400 hover:text-cyan-300"
+                            href="/"
+                        >
                             Reach Out
                         </a>
                     </li>
