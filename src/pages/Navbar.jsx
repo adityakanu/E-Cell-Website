@@ -1,4 +1,7 @@
+import { LineLoop } from "three";
 import ecellWhite from "../assets/Logo-White.png";
+import { Link } from "react-router-dom";
+import About from "./About";
 
 export default function Navbar() {
     return (
@@ -7,54 +10,49 @@ export default function Navbar() {
             className="text-sm font-light bg-transparent font-Poppins"
         >
             <div className="absolute z-20 flex items-center justify-between w-full px-5 pt-4">
-                <a href="/" className="flex items-center">
+                <Link to="/" className="flex items-center">
                     <img src={ecellWhite} className="w-[4rem] ml-8" alt="" />
-                </a>
+                </Link>
 
                 <ul className="flex items-center md:mr-8 space-x-9">
                     <li>
-                        <a
+                        <Link to="/"
                             className="font-thin text-amber-400 hover:text-cyan-300"
-                            href="/"
                         >
                             Home
-                        </a>
+                        </Link>
                     </li>
 
                     <li>
-                        <a
+                        <Link to="/About"
                             className="font-thin text-amber-400 hover:text-cyan-300"
-                            href="/"
                         >
                             About Us
-                        </a>
+                        </Link>
                     </li>
 
                     <li>
-                        <a
+                        <Link to="/Initiative"
                             className="font-thin text-amber-400 hover:text-cyan-300"
-                            href="/"
                         >
                             Initiatives
-                        </a>
+                        </Link>
                     </li>
 
                     <li>
-                        <a
+                        <Link to="/Gallery"
                             className="font-thin text-amber-400 hover:text-cyan-300"
-                            href="/"
                         >
                             Gallery
-                        </a>
+                        </Link>
                     </li>
 
                     <li>
-                        <a
+                        <Link to="/ReachOut"
                             className="font-thin text-amber-400 hover:text-cyan-300"
-                            href="/"
                         >
                             Reach Out
-                        </a>
+                        </Link>
                     </li>
                 </ul>
             </div>

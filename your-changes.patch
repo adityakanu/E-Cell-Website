@@ -1,0 +1,416 @@
+From 7dd31704c084fb61041b8c2138165e957acfa235 Mon Sep 17 00:00:00 2001
+From: Anurag Bhandari <anuragbhandari77736@gmail.com>
+Date: Wed, 9 Aug 2023 14:25:44 +0530
+Subject: [PATCH] Implement single page app, lazy loading, and spinner
+ component
+
+---
+ package-lock.json                      | 72 ++++++++++++++++++++------
+ package.json                           |  9 ++--
+ src/App.jsx                            | 64 ++++++++++++++++-------
+ src/components/Spinner.jsx             | 11 ++++
+ src/{components => pages}/About.jsx    |  0
+ src/pages/AppLayout.jsx                | 15 ++++++
+ src/{components => pages}/Gallery.jsx  |  0
+ src/{components => pages}/Home.jsx     |  0
+ src/{components => pages}/Navbar.jsx   | 32 ++++++------
+ src/{components => pages}/ReachOut.jsx |  0
+ 10 files changed, 145 insertions(+), 58 deletions(-)
+ create mode 100644 src/components/Spinner.jsx
+ rename src/{components => pages}/About.jsx (100%)
+ create mode 100644 src/pages/AppLayout.jsx
+ rename src/{components => pages}/Gallery.jsx (100%)
+ rename src/{components => pages}/Home.jsx (100%)
+ rename src/{components => pages}/Navbar.jsx (73%)
+ rename src/{components => pages}/ReachOut.jsx (100%)
+
+diff --git a/package-lock.json b/package-lock.json
+index af54522..133459f 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -9,8 +9,8 @@
+             "version": "0.0.0",
+             "dependencies": {
+                 "@react-three/drei": "^9.78.2",
+-                "@react-three/fiber": "^8.13.5",
+-                "@react-three/postprocessing": "^2.14.13",
++                "@react-three/fiber": "^8.13.6",
++                "@react-three/postprocessing": "^2.15.0",
+                 "@types/three": "^0.154.0",
+                 "framer-motion": "^10.12.21",
+                 "jquery": "^3.7.0",
+@@ -18,6 +18,7 @@
+                 "postprocessing": "^6.32.2",
+                 "react": "^18.2.0",
+                 "react-dom": "^18.2.0",
++                "react-router-dom": "^6.14.2",
+                 "three": "^0.154.0"
+             },
+             "devDependencies": {
+@@ -29,8 +30,8 @@
+                 "eslint-plugin-react": "^7.32.2",
+                 "eslint-plugin-react-hooks": "^4.6.0",
+                 "eslint-plugin-react-refresh": "^0.4.1",
+-                "postcss": "^8.4.25",
+-                "tailwindcss": "^3.3.2",
++                "postcss": "^8.4.27",
++                "tailwindcss": "^3.3.3",
+                 "vite": "^4.4.0"
+             }
+         },
+@@ -1536,9 +1537,9 @@
+             }
+         },
+         "node_modules/@react-three/fiber": {
+-            "version": "8.13.5",
+-            "resolved": "https://registry.npmjs.org/@react-three/fiber/-/fiber-8.13.5.tgz",
+-            "integrity": "sha512-x9QdsaB/Wm/6NGvRXQahPPWfn2dQce7Fg3C2r00NNzyDdqRKw32YavL+WEqjZOOd0nvFpzv7FtaKc+VCOTR59w==",
++            "version": "8.13.6",
++            "resolved": "https://registry.npmjs.org/@react-three/fiber/-/fiber-8.13.6.tgz",
++            "integrity": "sha512-V49lldHcbsC7PMnnf4aYrMpHPQe8R7hJYL0AEFjqwioY0nkwga9A+Jx6lCLVG02DF03xwCfJZv5cjZCChffsWg==",
+             "dependencies": {
+                 "@babel/runtime": "^7.17.8",
+                 "@types/react-reconciler": "^0.26.7",
+@@ -1577,9 +1578,9 @@
+             }
+         },
+         "node_modules/@react-three/postprocessing": {
+-            "version": "2.14.13",
+-            "resolved": "https://registry.npmjs.org/@react-three/postprocessing/-/postprocessing-2.14.13.tgz",
+-            "integrity": "sha512-wtlaynEFVwCBCmVExnrCRDyGj0OHUWL4gNNkpN+hgVifWAnOVYmoH5vA7dI93NMUQ/T7ApY5lk03zoLyVKdsug==",
++            "version": "2.15.0",
++            "resolved": "https://registry.npmjs.org/@react-three/postprocessing/-/postprocessing-2.15.0.tgz",
++            "integrity": "sha512-kldXieRcn8tB3bIVwRAFa1ojG11tkuMLAFYOra32E7y9n1nhVU4FKx+GxmblHSiRWpvGnEje/kYxDKTPjKj4eA==",
+             "dependencies": {
+                 "maath": "^0.6.0",
+                 "n8ao": "^1.6.6",
+@@ -1592,6 +1593,14 @@
+                 "three": ">= 0.138.0"
+             }
+         },
++        "node_modules/@remix-run/router": {
++            "version": "1.7.2",
++            "resolved": "https://registry.npmjs.org/@remix-run/router/-/router-1.7.2.tgz",
++            "integrity": "sha512-7Lcn7IqGMV+vizMPoEl5F0XDshcdDYtMI6uJLQdQz5CfZAwy3vvGKYSUk789qndt5dEC4HfSjviSYlSoHGL2+A==",
++            "engines": {
++                "node": ">=14"
++            }
++        },
+         "node_modules/@stitches/react": {
+             "version": "1.2.8",
+             "resolved": "https://registry.npmjs.org/@stitches/react/-/react-1.2.8.tgz",
+@@ -4215,9 +4224,9 @@
+             }
+         },
+         "node_modules/postcss": {
+-            "version": "8.4.25",
+-            "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.4.25.tgz",
+-            "integrity": "sha512-7taJ/8t2av0Z+sQEvNzCkpDynl0tX3uJMCODi6nT3PfASC7dYCWV9aQ+uiCf+KBD4SEFcu+GvJdGdwzQ6OSjCw==",
++            "version": "8.4.27",
++            "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.4.27.tgz",
++            "integrity": "sha512-gY/ACJtJPSmUFPDCHtX78+01fHa64FaU4zaaWfuh1MhGJISufJAH4cun6k/8fwsHYeK4UQmENQK+tRLCFJE8JQ==",
+             "dev": true,
+             "funding": [
+                 {
+@@ -4531,6 +4540,36 @@
+                 "node": ">=0.10.0"
+             }
+         },
++        "node_modules/react-router": {
++            "version": "6.14.2",
++            "resolved": "https://registry.npmjs.org/react-router/-/react-router-6.14.2.tgz",
++            "integrity": "sha512-09Zss2dE2z+T1D03IheqAFtK4UzQyX8nFPWx6jkwdYzGLXd5ie06A6ezS2fO6zJfEb/SpG6UocN2O1hfD+2urQ==",
++            "dependencies": {
++                "@remix-run/router": "1.7.2"
++            },
++            "engines": {
++                "node": ">=14"
++            },
++            "peerDependencies": {
++                "react": ">=16.8"
++            }
++        },
++        "node_modules/react-router-dom": {
++            "version": "6.14.2",
++            "resolved": "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.14.2.tgz",
++            "integrity": "sha512-5pWX0jdKR48XFZBuJqHosX3AAHjRAzygouMTyimnBPOLdY3WjzUSKhus2FVMihUFWzeLebDgr4r8UeQFAct7Bg==",
++            "dependencies": {
++                "@remix-run/router": "1.7.2",
++                "react-router": "6.14.2"
++            },
++            "engines": {
++                "node": ">=14"
++            },
++            "peerDependencies": {
++                "react": ">=16.8",
++                "react-dom": ">=16.8"
++            }
++        },
+         "node_modules/react-use-measure": {
+             "version": "2.1.1",
+             "resolved": "https://registry.npmjs.org/react-use-measure/-/react-use-measure-2.1.1.tgz",
+@@ -4982,9 +5021,9 @@
+             }
+         },
+         "node_modules/tailwindcss": {
+-            "version": "3.3.2",
+-            "resolved": "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.3.2.tgz",
+-            "integrity": "sha512-9jPkMiIBXvPc2KywkraqsUfbfj+dHDb+JPWtSJa9MLFdrPyazI7q6WX2sUrm7R9eVR7qqv3Pas7EvQFzxKnI6w==",
++            "version": "3.3.3",
++            "resolved": "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.3.3.tgz",
++            "integrity": "sha512-A0KgSkef7eE4Mf+nKJ83i75TMyq8HqY3qmFIJSWy8bNt0v1lG7jUcpGpoTFxAwYcWOphcTBLPPJg+bDfhDf52w==",
+             "dev": true,
+             "dependencies": {
+                 "@alloc/quick-lru": "^5.2.0",
+@@ -5007,7 +5046,6 @@
+                 "postcss-load-config": "^4.0.1",
+                 "postcss-nested": "^6.0.1",
+                 "postcss-selector-parser": "^6.0.11",
+-                "postcss-value-parser": "^4.2.0",
+                 "resolve": "^1.22.2",
+                 "sucrase": "^3.32.0"
+             },
+diff --git a/package.json b/package.json
+index 4326836..6179520 100644
+--- a/package.json
++++ b/package.json
+@@ -11,8 +11,8 @@
+     },
+     "dependencies": {
+         "@react-three/drei": "^9.78.2",
+-        "@react-three/fiber": "^8.13.5",
+-        "@react-three/postprocessing": "^2.14.13",
++        "@react-three/fiber": "^8.13.6",
++        "@react-three/postprocessing": "^2.15.0",
+         "@types/three": "^0.154.0",
+         "framer-motion": "^10.12.21",
+         "jquery": "^3.7.0",
+@@ -20,6 +20,7 @@
+         "postprocessing": "^6.32.2",
+         "react": "^18.2.0",
+         "react-dom": "^18.2.0",
++        "react-router-dom": "^6.14.2",
+         "three": "^0.154.0"
+     },
+     "devDependencies": {
+@@ -31,8 +32,8 @@
+         "eslint-plugin-react": "^7.32.2",
+         "eslint-plugin-react-hooks": "^4.6.0",
+         "eslint-plugin-react-refresh": "^0.4.1",
+-        "postcss": "^8.4.25",
+-        "tailwindcss": "^3.3.2",
++        "postcss": "^8.4.27",
++        "tailwindcss": "^3.3.3",
+         "vite": "^4.4.0"
+     }
+ }
+diff --git a/src/App.jsx b/src/App.jsx
+index 7352ea6..c4bb8b5 100644
+--- a/src/App.jsx
++++ b/src/App.jsx
+@@ -1,22 +1,46 @@
+-import './App.css';
+-import About from './components/About';
+-import Gallery from './components/Gallery';
+-import Home from './components/Home';
+-import Initiative from './components/initiatives';
+-import Navbar from './components/Navbar';
+-import ReachOut from './components/ReachOut';
++import React, { Suspense } from 'react';
++import { RouterProvider, createBrowserRouter } from 'react-router-dom';
++import AppLayout from './pages/AppLayout';
++import Spinner from './components/Spinner'; // Import the Spinner component
+ 
+-function App() {
+-	return (
+-		<main className='bg-black/70 body-font'>
+-			<Navbar />
+-			<Home />
+-			<About />
+-			<Initiative />
+-			<Gallery />
+-			<ReachOut />
+-		</main>
+-	);
+-}
++const LazyHome = React.lazy(() => import('./pages/Home'));
++const LazyAbout = React.lazy(() => import('./pages/About'));
++const LazyInitiative = React.lazy(() => import('./components/initiatives'));
++const LazyGallery = React.lazy(() => import('./pages/Gallery'));
++const LazyReachOut = React.lazy(() => import('./pages/ReachOut'));
++
++const router = createBrowserRouter([
++  {
++    element: <AppLayout />,
++    children: [
++      {
++        path: '/',
++        element: <LazyHome />,
++      },
++      {
++        path: '/About',
++        element: <LazyAbout />,
++      },
++      {
++        path: '/Initiative',
++        element: <LazyInitiative />,
++      },
++      {
++        path: '/Gallery',
++        element: <LazyGallery />,
++      },
++      {
++        path: '/ReachOut',
++        element: <LazyReachOut />,
++      },
++    ],
++  },
++]);
+ 
+-export default App;
++export default function App() {
++  return (
++    <Suspense fallback={<Spinner />}> {/* Use the Spinner component */}
++      <RouterProvider router={router} />
++    </Suspense>
++  );
++}
+diff --git a/src/components/Spinner.jsx b/src/components/Spinner.jsx
+new file mode 100644
+index 0000000..780ffd2
+--- /dev/null
++++ b/src/components/Spinner.jsx
+@@ -0,0 +1,11 @@
++import React from 'react';
++
++const Spinner = () => {
++  return (
++    <div className="flex justify-center items-center h-screen">
++      <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
++    </div>
++  );
++};
++
++export default Spinner;
+diff --git a/src/components/About.jsx b/src/pages/About.jsx
+similarity index 100%
+rename from src/components/About.jsx
+rename to src/pages/About.jsx
+diff --git a/src/pages/AppLayout.jsx b/src/pages/AppLayout.jsx
+new file mode 100644
+index 0000000..33b437a
+--- /dev/null
++++ b/src/pages/AppLayout.jsx
+@@ -0,0 +1,15 @@
++import React from 'react';
++import Navbar from '../pages/Navbar';
++
++import { Outlet, useLocation } from 'react-router-dom';
++
++export default function AppLayout() {
++
++  return (
++    <>
++     
++      <Navbar />
++      <Outlet />
++    </>
++  );
++}
+diff --git a/src/components/Gallery.jsx b/src/pages/Gallery.jsx
+similarity index 100%
+rename from src/components/Gallery.jsx
+rename to src/pages/Gallery.jsx
+diff --git a/src/components/Home.jsx b/src/pages/Home.jsx
+similarity index 100%
+rename from src/components/Home.jsx
+rename to src/pages/Home.jsx
+diff --git a/src/components/Navbar.jsx b/src/pages/Navbar.jsx
+similarity index 73%
+rename from src/components/Navbar.jsx
+rename to src/pages/Navbar.jsx
+index 9130891..36bf3e1 100644
+--- a/src/components/Navbar.jsx
++++ b/src/pages/Navbar.jsx
+@@ -1,4 +1,7 @@
++import { LineLoop } from "three";
+ import ecellWhite from "../assets/Logo-White.png";
++import { Link } from "react-router-dom";
++import About from "./About";
+ 
+ export default function Navbar() {
+     return (
+@@ -7,54 +10,49 @@ export default function Navbar() {
+             className="text-sm font-light bg-transparent font-Poppins"
+         >
+             <div className="absolute z-20 flex items-center justify-between w-full px-5 pt-4">
+-                <a href="/" className="flex items-center">
++                <Link to="/" className="flex items-center">
+                     <img src={ecellWhite} className="w-[4rem] ml-8" alt="" />
+-                </a>
++                </Link>
+ 
+                 <ul className="flex items-center md:mr-8 space-x-9">
+                     <li>
+-                        <a
++                        <Link to="/"
+                             className="font-thin text-amber-400 hover:text-cyan-300"
+-                            href="/"
+                         >
+                             Home
+-                        </a>
++                        </Link>
+                     </li>
+ 
+                     <li>
+-                        <a
++                        <Link to="/About"
+                             className="font-thin text-amber-400 hover:text-cyan-300"
+-                            href="/"
+                         >
+                             About Us
+-                        </a>
++                        </Link>
+                     </li>
+ 
+                     <li>
+-                        <a
++                        <Link to="/Initiative"
+                             className="font-thin text-amber-400 hover:text-cyan-300"
+-                            href="/"
+                         >
+                             Initiatives
+-                        </a>
++                        </Link>
+                     </li>
+ 
+                     <li>
+-                        <a
++                        <Link to="/Gallery"
+                             className="font-thin text-amber-400 hover:text-cyan-300"
+-                            href="/"
+                         >
+                             Gallery
+-                        </a>
++                        </Link>
+                     </li>
+ 
+                     <li>
+-                        <a
++                        <Link to="/ReachOut"
+                             className="font-thin text-amber-400 hover:text-cyan-300"
+-                            href="/"
+                         >
+                             Reach Out
+-                        </a>
++                        </Link>
+                     </li>
+                 </ul>
+             </div>
+diff --git a/src/components/ReachOut.jsx b/src/pages/ReachOut.jsx
+similarity index 100%
+rename from src/components/ReachOut.jsx
+rename to src/pages/ReachOut.jsx
+-- 
+2.41.0.windows.1
+
