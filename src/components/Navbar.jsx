@@ -84,14 +84,25 @@ export default function Navbar() {
 					}`}
 				>
 					<button onClick={() => setHamburgerOpen(!hamburgerOpen)}>
-						<svg
-							xmlns='http://www.w3.org/2000/svg'
-							viewBox='0 0 256 256'
-							fill={hamburgerOpen ? '#000000' : '#fff'}
-							width={36}
-						>
-							<path d='M228,128a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,128ZM40,76H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24ZM216,180H40a12,12,0,0,0,0,24H216a12,12,0,0,0,0-24Z' />
-						</svg>
+						{hamburgerOpen ? (
+							<svg
+                                xmlns='http://www.w3.org/2000/svg'
+                                viewBox='0 0 256 256'
+                                fill='#000'
+                                width={32}
+							>
+								<path d='M208.49,191.51a12,12,0,0,1-17,17L128,145,64.49,208.49a12,12,0,0,1-17-17L111,128,47.51,64.49a12,12,0,0,1,17-17L128,111l63.51-63.52a12,12,0,0,1,17,17L145,128Z' />
+							</svg>
+						) : (
+							<svg
+								xmlns='http://www.w3.org/2000/svg'
+								viewBox='0 0 256 256'
+								fill='#fff'
+								width={36}
+							>
+								<path d='M228,128a12,12,0,0,1-12,12H40a12,12,0,0,1,0-24H216A12,12,0,0,1,228,128ZM40,76H216a12,12,0,0,0,0-24H40a12,12,0,0,0,0,24ZM216,180H40a12,12,0,0,0,0,24H216a12,12,0,0,0,0-24Z' />
+							</svg>
+						)}
 					</button>
 				</div>
 
