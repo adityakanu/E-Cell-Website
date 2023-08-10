@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useScroll, useTransform, cubicBezier } from 'framer-motion';
 
-const TimelineEvent = ({ date, title, description }) => {
+const TimelineEvent = ({ date, title, description, image }) => {
 	const childRef = React.useRef();
 
 	const { scrollYProgress: eventScrollProgress } = useScroll({
@@ -18,20 +18,25 @@ const TimelineEvent = ({ date, title, description }) => {
 	);
 
 	return (
-		<div className='relative' ref={childRef}>
-			<div
-				className='absolute top-5 -left-[0.75rem] bg-white h-[20px] w-[20px] rounded-full border-[4px] border-[#010106]'
-				title={title}
-			></div>
+		<motion.div
+			className='relative flex flex-col-reverse items-start gap-16 lg:flex-row'
+			ref={childRef}
+			style={{ opacity }}
+		>
+			<img
+				src={image}
+				alt='abc'
+				className='object-cover w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl rounded-2xl max-h-84 sm:max-h-96 lg:hidden'
+			/>
 
-			<motion.div className='pl-10 text-white' style={{ opacity }}>
-				<span className='text-sm font-bold tracking-widest !text-gray-100 opacity-40'>
+			<div className='max-w-md text-white min-w-fit'>
+				<span className='text-[1rem] font-bold tracking-widest !text-gray-100 opacity-40'>
 					{date}
 				</span>
-				<h3 className='mb-2 text-3xl font-semibold tracking-wide'>{title}</h3>
-				<p className='text-xl'>{description}</p>
-			</motion.div>
-		</div>
+				<h3 className='mb-2 text-4xl font-semibold tracking-wide'>{title}</h3>
+				<p className='text-2xl'>{description}</p>
+			</div>
+		</motion.div>
 	);
 };
 
