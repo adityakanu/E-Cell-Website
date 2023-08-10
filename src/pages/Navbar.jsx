@@ -1,61 +1,45 @@
-import { LineLoop } from "three";
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import ecellWhite from "../assets/Logo-White.png";
-import { Link } from "react-router-dom";
-import About from "./About";
 
 export default function Navbar() {
+    const location = useLocation();
+    const isReachOutPage = location.pathname === "/ReachOut";
+
     return (
         <section
             id="navbar"
-            className="text-sm font-light bg-transparent font-Poppins"
+            className={`text-sm font-light font-Poppins ${
+                isReachOutPage ? "bg-black" : "bg-white"
+            }`}
         >
-            <div className="absolute z-20 flex items-center justify-between w-full px-5 pt-4">
+            <div className="absolute z-20 flex items-center justify-between w-full px-5 py-4">
                 <Link to="/" className="flex items-center">
                     <img src={ecellWhite} className="w-[4rem] ml-8" alt="" />
                 </Link>
 
-                <ul className="flex items-center md:mr-8 space-x-9">
-                    <li>
-                        <Link to="/"
-                            className="font-thin text-amber-400 hover:text-cyan-300"
-                        >
-                            Home
-                        </Link>
-                    </li>
-
-                    <li>
-                        <Link to="/About"
-                            className="font-thin text-amber-400 hover:text-cyan-300"
-                        >
-                            About Us
-                        </Link>
-                    </li>
-
-                    <li>
-                        <Link to="/Initiative"
-                            className="font-thin text-amber-400 hover:text-cyan-300"
-                        >
-                            Initiatives
-                        </Link>
-                    </li>
-
-                    <li>
-                        <Link to="/Gallery"
-                            className="font-thin text-amber-400 hover:text-cyan-300"
-                        >
-                            Gallery
-                        </Link>
-                    </li>
-
-                    <li>
-                        <Link to="/ReachOut"
-                            className="font-thin text-amber-400 hover:text-cyan-300"
-                        >
-                            Reach Out
-                        </Link>
-                    </li>
+                <ul className="flex items-center space-x-6 md:space-x-9">
+                    <NavItem to="/" label="Home" />
+                    <NavItem to="/About" label="About Us" />
+                    <NavItem to="/Initiative" label="Initiatives" />
+                    <NavItem to="/Gallery" label="Gallery" />
+                    <NavItem to="/ReachOut" label="Reach Out" />
                 </ul>
             </div>
         </section>
+    );
+}
+
+// Create a separate NavItem component
+function NavItem({ to, label }) {
+    return (
+        <li className="relative">
+            <Link
+                to={to}
+                className="font-bold text-white hover:text-cyan-300 transition duration-300"
+            >
+                {label}
+            </Link>
+        </li>
     );
 }

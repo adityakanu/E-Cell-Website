@@ -10,10 +10,12 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "@react-spring/web": "^9.7.3",
         "@react-three/drei": "^9.78.2",
         "@react-three/fiber": "^8.13.6",
         "@react-three/postprocessing": "^2.15.0",
         "@types/three": "^0.154.0",
+        "classnames": "^2.3.2",
         "framer-motion": "^10.12.21",
         "jquery": "^3.7.0",
         "leva": "^0.9.35",
