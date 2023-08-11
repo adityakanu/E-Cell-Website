@@ -3,6 +3,14 @@ export default {
     content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
     theme: {
         extend: {
+colors:{
+'custom-grey':'#222222',
+},
+textUnderlineOffset:{
+'unedrline':"underline-offset-2px",
+'unedrline-4':"underline-offset-4px",
+},
+
             fontFamily: {
                 Montserrat: ["Montserrat", "sans-serif"],
                 Poppins: ["Poppins", "sans-serif"],
