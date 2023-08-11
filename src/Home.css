@@ -32,3 +32,22 @@
     opacity: 0.8;
     margin-top: 10px;
 }
+/* Default styles for larger screens */
+.text-4xl {
+    font-size: 2rem; /* 32px */
+}
+
+.text-lg {
+    font-size: 1.125rem; /* 18px */
+}
+
+/* Media queries for smaller screens */
+@media (max-width: 768px) {
+    .text-4xl {
+        font-size: 1.5rem; /* 24px */
+    }
+
+    .text-lg {
+        font-size: 1rem; /* 16px */
+    }
+}

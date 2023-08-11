@@ -1,6 +1,6 @@
 import React from 'react';
 import back from '../assets/backimg.svg';
-import '../Home.css'; // Correct path to Home.css
+import '../Home.css';
 
 export default function Home() {
     return (
@@ -13,7 +13,7 @@ export default function Home() {
                 />
                 <div className="absolute inset-0 bg-black opacity-30" />
                 <div className="absolute z-10 text-center animate-moveFade">
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight mb-4">
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight mb-2">
                         Welcome to The Entrepreneurship Cell
                     </h1>
                     <h2 className="text-lg md:text-xl lg:text-2xl">
