@@ -26,34 +26,33 @@ function Cube() {
         // meshRef.current.rotation.x += 0.01;
         meshRef.current.rotation.y += 0.015;
     });
-    function Loader() {
-        const { progress } = useProgress();
-        return <Html center>{progress} % loaded</Html>;
-    }
+
     return (
-        <Suspense fallback={<Loader />}>
+        <>
             <ambientLight intensity={1.5} />
             {/* <directionalLight /> */}
             <pointLight position={[10, 10, 10]} />
             <hemisphereLight intensity={0.5} />
-            <Suspense fallback={<Loader />}>
-                <mesh ref={meshRef}>
-                    <boxGeometry args={[2, 2, 2]} />
-                    <meshStandardMaterial
-                        displacementScale={0}
-                        map={colorMap}
-                        displacementMap={displacementMap}
-                        normalMap={normalMap}
-                        roughnessMap={roughnessMap}
-                        aoMap={aoMap}
-                    />
-                </mesh>
-            </Suspense>
-        </Suspense>
+            <mesh ref={meshRef}>
+                <boxGeometry args={[2, 2, 2]} />
+                <meshStandardMaterial
+                    displacementScale={0}
+                    map={colorMap}
+                    displacementMap={displacementMap}
+                    normalMap={normalMap}
+                    roughnessMap={roughnessMap}
+                    aoMap={aoMap}
+                />
+            </mesh>
+        </>
     );
 }
 
 function ThreeScene() {
+    function Loader() {
+        const { progress } = useProgress();
+        return <Html center>{progress} % loaded</Html>;
+    }
     return (
         <div className="absolute z-0 w-screen h-screen ">
             <Canvas
@@ -61,7 +60,7 @@ function ThreeScene() {
                 dpr={[1, 1.5]}
                 camera={{ position: [10, 10, 10], fov: 25 }}
             >
-                <Suspense fallback={null}>
+                <Suspense fallback={Loader}>
                     <Cube />
                     <ContactShadows
                         resolution={1024}
