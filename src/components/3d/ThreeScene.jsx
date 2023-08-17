@@ -1,5 +1,10 @@
 /* eslint-disable react/no-unknown-property */
-import { ContactShadows, useTexture } from "@react-three/drei";
+import {
+    ContactShadows,
+    Html,
+    useProgress,
+    useTexture,
+} from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense, useRef } from "react";
 import { Effects } from "./Effects";
@@ -21,25 +26,30 @@ function Cube() {
         // meshRef.current.rotation.x += 0.01;
         meshRef.current.rotation.y += 0.015;
     });
-
+    function Loader() {
+        const { progress } = useProgress();
+        return <Html center>{progress} % loaded</Html>;
+    }
     return (
-        <>
+        <Suspense fallback={<Loader />}>
             <ambientLight intensity={1.5} />
             {/* <directionalLight /> */}
             <pointLight position={[10, 10, 10]} />
             <hemisphereLight intensity={0.5} />
-            <mesh ref={meshRef}>
-                <boxGeometry args={[2, 2, 2]} />
-                <meshStandardMaterial
-                    displacementScale={0}
-                    map={colorMap}
-                    displacementMap={displacementMap}
-                    normalMap={normalMap}
-                    roughnessMap={roughnessMap}
-                    aoMap={aoMap}
-                />
-            </mesh>
-        </>
+            <Suspense fallback={<Loader />}>
+                <mesh ref={meshRef}>
+                    <boxGeometry args={[2, 2, 2]} />
+                    <meshStandardMaterial
+                        displacementScale={0}
+                        map={colorMap}
+                        displacementMap={displacementMap}
+                        normalMap={normalMap}
+                        roughnessMap={roughnessMap}
+                        aoMap={aoMap}
+                    />
+                </mesh>
+            </Suspense>
+        </Suspense>
     );
 }
 

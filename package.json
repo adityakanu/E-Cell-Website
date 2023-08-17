@@ -15,6 +15,7 @@
         "@react-three/postprocessing": "^2.14.13",
         "@types/three": "^0.154.0",
         "framer-motion": "^10.12.21",
+        "gltfjsx": "^6.2.11",
         "jquery": "^3.7.0",
         "leva": "^0.9.35",
         "postprocessing": "^6.32.2",
