@@ -34,7 +34,7 @@ const TimelineEvent = ({ date, title, description, image }) => {
 					{date}
 				</span>
 				<h3 className='mb-2 text-4xl font-semibold tracking-wide'>{title}</h3>
-				<p className='text-2xl'>{description}</p>
+				<p className='text-lg sm:text-2xl'>{description}</p>
 			</div>
 		</motion.div>
 	);
