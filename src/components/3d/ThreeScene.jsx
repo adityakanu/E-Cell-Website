@@ -1,5 +1,10 @@
 /* eslint-disable react/no-unknown-property */
-import { ContactShadows, useTexture } from "@react-three/drei";
+import {
+    ContactShadows,
+    Html,
+    useProgress,
+    useTexture,
+} from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Suspense, useRef } from "react";
 import { Effects } from "./Effects";
@@ -44,6 +49,10 @@ function Cube() {
 }
 
 function ThreeScene() {
+    function Loader() {
+        const { progress } = useProgress();
+        return <Html center>{progress} % loaded</Html>;
+    }
     return (
         <div className="absolute z-0 w-screen h-screen ">
             <Canvas
@@ -51,7 +60,7 @@ function ThreeScene() {
                 dpr={[1, 1.5]}
                 camera={{ position: [10, 10, 10], fov: 25 }}
             >
-                <Suspense fallback={null}>
+                <Suspense fallback={Loader}>
                     <Cube />
                     <ContactShadows
                         resolution={1024}
