@@ -48,7 +48,7 @@ const Home = () => {
 				drawingCtx.moveTo(lastX, lastY);
 				drawingCtx.lineTo(currentX, currentY);
 				drawingCtx.closePath();
-				drawingCtx.lineWidth = 200;
+				drawingCtx.lineWidth = 350;
 				drawingCtx.stroke();
 				lastX = currentX;
 				lastY = currentY;
@@ -104,13 +104,13 @@ const Home = () => {
 				animate='animate'
 			>
 				<motion.span
-					className='block text-[2.6rem] sm:text-[4rem] md:text-[5rem] lg:text-[6.5rem] 2xl:text-[8rem] font-black text-white text-center'
+					className='block text-[2.5rem] sm:text-[4rem] md:text-[5rem] lg:text-[6.5rem] 2xl:text-[8rem] font-black text-white text-center tracking-wide'
 					variants={item}
 				>
 					ENTREPRENEURSHIP CELL
 				</motion.span>
 				<motion.span
-					className='block text-[1.5rem] sm:text-[3rem] md:text-[3.75rem] lg:text-[4rem] 2xl:text-[5rem] font-black text-white leading-[0.76]'
+					className='block text-[1.5rem] sm:text-[3rem] md:text-[3.75rem] lg:text-[4rem] 2xl:text-[5rem] font-black text-white leading-[0.76] tracking-wide'
 					variants={item}
 				>
 					NIT AGARTALA
