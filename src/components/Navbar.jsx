@@ -108,7 +108,7 @@ export default function Navbar() {
 				<div className='flex-row items-center hidden gap-6 md:flex'>
 					{navLinks.map((link, index) => (
 						<a href={link.href} key={index}>
-							<div className='hover:underline decoration-2'>{link.name}</div>
+							<div className='text-xl hover:underline decoration-2'>{link.name}</div>
 						</a>
 					))}
 				</div>
