@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+	scroll-behavior: smooth;
+}
+
 #root,
 body {
 	background-color: rgb(4, 2, 20);

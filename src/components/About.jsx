@@ -2,7 +2,10 @@ import ECellAbout from '../assets/grp.webp';
 
 export default function About() {
 	return (
-		<section id='About' className='py-16 bg-yellow-600 xl:py-48 font-Poppins'>
+		<section
+			id='about-us'
+			className='py-16 bg-yellow-600 xl:py-48 font-Poppins'
+		>
 			<div className='flex flex-col items-center xl:flex-row'>
 				<div className='AboutUsText'>
 					<p className='font-Montserrat font-bold  text-white xl:-rotate-90 p-0.5 mr-8 text-[2rem] xl:text-xl my-4 xl:my-0'>

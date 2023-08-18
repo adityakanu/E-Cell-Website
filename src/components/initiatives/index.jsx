@@ -16,7 +16,10 @@ const Initiative = () => {
 	const scale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
 	return (
-		<div className='w-full h-full px-8 mx-auto sm:px-16 font-Poppins mb-[8rem]'>
+		<div
+			className='w-full h-full px-8 mx-auto sm:px-16 font-Poppins mb-[8rem]'
+			id='initiatives'
+		>
 			<div className='my-16 text-5xl font-semibold text-center text-white md:text-7xl'>
 				Initiatives
 			</div>
