@@ -17,10 +17,6 @@ const navLinks = [
 		href: '#initiatives',
 	},
 	{
-		name: 'Gallery',
-		href: '#gallery',
-	},
-	{
 		name: 'Reach out',
 		href: '#reach-out',
 	},
@@ -50,26 +46,27 @@ export default function Navbar() {
 						<div className='relative flex flex-col items-center justify-center top-[50%] -translate-y-1/2'>
 							<div className='flex flex-col items-center gap-12 text-4xl font-medium text-[#FBBF24]'>
 								{navLinks.map((link, index) => (
-									<motion.div
-										key={index}
-										className='hover:underline decoration-2'
-										onClick={() => {
-											setHamburgerOpen(false);
-										}}
-										initial={{ y: 80, opacity: 0 }}
-										animate={{ y: 0, opacity: 1 }}
-										transition={{ delay: 0.8 - index * 0.1 }}
-										exit={{
-											opacity: 0,
-											y: 90,
-											transition: {
-												ease: 'easeInOut',
-												delay: 1 - index * 0.2,
-											},
-										}}
-									>
-										{link.name}
-									</motion.div>
+									<a key={index} href={link.href}>
+										<motion.div
+											className='hover:underline decoration-2'
+											onClick={() => {
+												setHamburgerOpen(false);
+											}}
+											initial={{ y: 80, opacity: 0 }}
+											animate={{ y: 0, opacity: 1 }}
+											transition={{ delay: 0.8 - index * 0.1 }}
+											exit={{
+												opacity: 0,
+												y: 90,
+												transition: {
+													ease: 'easeInOut',
+													delay: 1 - index * 0.2,
+												},
+											}}
+										>
+											{link.name}
+										</motion.div>
+									</a>
 								))}
 							</div>
 						</div>
@@ -111,7 +108,7 @@ export default function Navbar() {
 				<div className='flex-row items-center hidden gap-6 md:flex'>
 					{navLinks.map((link, index) => (
 						<a href={link.href} key={index}>
-							<div className='hover:underline decoration-2'>{link.name}</div>
+							<div className='text-xl hover:underline decoration-2'>{link.name}</div>
 						</a>
 					))}
 				</div>

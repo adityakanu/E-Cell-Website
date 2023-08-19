@@ -16,12 +16,15 @@ const Initiative = () => {
 	const scale = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
 	return (
-		<div className='w-full h-full px-8 mx-auto sm:px-16 font-Poppins mb-[8rem]'>
+		<div
+			className='w-full h-full px-8 mx-auto sm:px-16 font-Poppins mb-[8rem]'
+			id='initiatives'
+		>
 			<div className='my-16 text-5xl font-semibold text-center text-white md:text-7xl'>
 				Initiatives
 			</div>
 			<div ref={scrollRef}>
-				<div className='flex flex-row-reverse lg:flex-row  justify-end lg:justify-center h-full gap-[4rem] xl:gap-[8rem] w-full'>
+				<div className='flex flex-row-reverse lg:flex-row justify-end lg:justify-center h-full  md:gap-[4rem] xl:gap-[8rem] w-full'>
 					<div className='flex-col justify-around hidden gap-24 lg:flex'>
 						{Initiatives.map((initiative, index) => {
 							if (index % 2 == 0) {
@@ -44,12 +47,12 @@ const Initiative = () => {
 					</div>
 					<div className='flex flex-row'>
 						<motion.div
-							className='z-[100] w-[10px] h-full text-transparent origin-top bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500'
+							className='z-[100] w-[6px] sm:w-[10px] h-full text-transparent origin-top bg-gradient-to-b from-indigo-500 via-purple-500 to-pink-500'
 							style={{ scaleY: scale }}
 							ref={targeRef}
 						/>
-						<div className='relative -translate-x-[10px]  w-[10px] text-transparent  border-[#414141] border-[1px] bg-[#414141] h-full origin-top' />
-						<div className='relative h-full -translate-x-[31px] flex flex-col z-[10000] justify-around'>
+						<div className='relative -translate-x-[6px]  sm:-translate-x-[10px] w-[6px] sm:w-[10px] text-transparent  border-[#414141] border-[1px] bg-[#414141] h-full origin-top' />
+						<div className='relative h-full -translate-x-[25px] sm:-translate-x-[31px] flex flex-col z-[10000] justify-around'>
 							{Array(5)
 								.fill(0)
 								.map((_, index) => (
